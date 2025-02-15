@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>サイドバー例</title>
+  <style>
+    /* 全体レイアウトのリセット */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100%;
+    }
+    /* ヘッダー部分 */
+    header {
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+    }
+    /* メニューボタン */
+    .menu-btn {
+      font-size: 24px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    /* サイドバーのスタイル */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px; /* 初期状態では画面外に隠す */
+      width: 250px;
+      height: 100%;
+      background: #444;
+      color: #fff;
+      overflow-y: auto;
+      transition: left 0.3s ease;
+      padding: 20px;
+    }
+    /* サイドバーを表示するためのクラス */
+    .sidebar.active {
+      left: 0;
+    }
+    /* サイドバー内のメニュー項目 */
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar ul li {
+      margin: 15px 0;
+    }
+    .sidebar ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    /* メインコンテンツ */
+    .content {
+      padding: 20px;
+      margin-left: 0; /* サイドバー非表示時 */
+      transition: margin-left 0.3s ease;
+    }
+    .content.shift {
+      margin-left: 250px; /* サイドバー表示時に少しずらす */
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="menu-btn" id="menuBtn">&#9776;</span>
+    <h1>My Page</h1>
+  </header>
+
+  <!-- サイドバー -->
+  <nav class="sidebar" id="sidebar">
+    <h2>メニュー</h2>
+    <ul>
+      <li><a href="https://twitter.com/chaoscorp__" target="_blank">Twitterアカウント(音楽)</a></li>
+      <li><a href="https://www.youtube.com/@chaoscorpmus" target="_blank">YouTube</a></li>
+      <li><a href="https://open.spotify.com/intl-ja/artist/2aSL2Ldl0rYGvYnPrkxaFX" target="_blank">Spotify</li>
+      <!-- 他のリンクも追加 -->
+    </ul>
+  </nav>
+
+  <!-- メインコンテンツ -->
+  <div class="content" id="content">
+    <h1>Is0Pの物置</h1>
+    <h3>Is0Pの制作物を順次公開していきます。</h3>
+    <p>ここにあなたのページの内容を記述します。</p>
+  </div>
+
+  <script>
+    // JavaScriptでメニューボタンのクリックイベントを処理
+    const menuBtn = document.getElementById('menuBtn');
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+
+    menuBtn.addEventListener('click', function() {
+      sidebar.classList.toggle('active');
+      content.classList.toggle('shift');
+    });
+  </script>
+
+</body>
+</html>
